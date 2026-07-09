@@ -1,19 +1,18 @@
-from pathlib import Path
 import sys
 import warnings
 import zipfile
-import pandas as pd
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from pathlib import Path
+
 import gdown
-from _MySQL import banco
-from _MySQL import config
-from _MySQL.config import PASTA_DADOS
-from _MySQL.config import DRIVE_FILE_ID
+import pandas as pd
 
-def teste():
-    print ("TESTE")
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-def baixar_base_drive():
+from _MySQL import banco, config
+from _MySQL.config import DRIVE_FILE_ID, PASTA_DADOS
+
+
+def baixar_base_drive(): #fazer condição caso n esteja na pasta
     """Realiza o Download da base de dados do Drive"""
     url = f"https://drive.google.com/uc?id={DRIVE_FILE_ID}"
     destino = PASTA_DADOS / "viagens_2025_6meses.zip"
@@ -28,7 +27,6 @@ def localizar_zip():
             f"coloque-o na pasta '{config.PASTA_DADOS}' antes de rodar este script."
         )
     return caminho
-
 
 def carregar_csv(conexao, zip_aberto, nome_csv, tabela):
     """Le um CSV de dentro do zip e insere todas as linhas na tabela do MySQL.
