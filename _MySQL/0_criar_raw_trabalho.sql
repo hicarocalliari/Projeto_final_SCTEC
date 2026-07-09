@@ -9,83 +9,83 @@ SET lc_time_names = 'pt_BR';
 
 DROP TABLE IF EXISTS raw_pagamento;
 CREATE TABLE raw_pagamento (
-    id_viagem VARCHAR(100),
-    num_proposta VARCHAR(100),
-    cod_orgao_superior VARCHAR(100),
-    nome_orgao_superior VARCHAR(150),
-    cod_orgao_pagador VARCHAR(100),
-    nome_orgao_pagador VARCHAR(150),
-    cod_ug_pagadora VARCHAR(100),
-    nome_ug_pagadora VARCHAR(100),
-    tipo_pagamento VARCHAR(100),
-    valor VARCHAR(100)
+    id_viagem VARCHAR(20),
+    num_proposta VARCHAR(20),
+    cod_orgao_superior VARCHAR(20),
+    nome_orgao_superior VARCHAR(255),
+    cod_orgao_pagador VARCHAR(20),
+    nome_orgao_pagador VARCHAR(255),
+    cod_ug_pagadora VARCHAR(20),
+    nome_ug_pagadora VARCHAR(255),
+    tipo_pagamento VARCHAR(50),
+    valor VARCHAR(30)
 ) ENGINE=InnoDB ROW_FORMAT=DYNAMIC;
 
 DROP TABLE IF EXISTS raw_passagem;
 CREATE TABLE raw_passagem (
-    id_proc_viagem VARCHAR(20),
+    id_viagem VARCHAR(20),
     num_proposta VARCHAR(20),
-    meio_transporte VARCHAR(20),
-    pais_origem_ida VARCHAR(50),
-    uf_origem_ida VARCHAR(30),
-    cidade_origem_ida VARCHAR(50),
-    pais_destino_ida VARCHAR(50),
-    uf_destino_ida VARCHAR(30),
-    cidade_destino_ida VARCHAR(50),
+    meio_transporte VARCHAR(50),
+    pais_origem_ida VARCHAR(60),
+    uf_origem_ida VARCHAR(40),
+    cidade_origem_ida VARCHAR(80),
+    pais_destino_ida VARCHAR(60),
+    uf_destino_ida VARCHAR(40),
+    cidade_destino_ida VARCHAR(80),
     pais_origem_volta VARCHAR(50),
     uf_origem_volta VARCHAR(30),
     cidade_origem_volta VARCHAR(50),
     pais_destino_volta VARCHAR(50),
     uf_destino_volta VARCHAR(30),
     cidade_destino_volta VARCHAR(50),
-    valor_passagem VARCHAR(20),
-    taxa_servico VARCHAR(20),
+    valor_passagem VARCHAR(30),
+    taxa_servico VARCHAR(30),
     data_emissao_compra VARCHAR(20),
     hora_emissao_compra VARCHAR(10)
 ) ENGINE=InnoDB ROW_FORMAT=DYNAMIC;
 
 DROP TABLE IF EXISTS raw_trecho;
 CREATE TABLE raw_trecho (
-    id_processo_viagem VARCHAR(20),
+    id_viagem VARCHAR(20),
     num_proposta VARCHAR(20),
     sequencia_trecho VARCHAR(10),
     origem_data VARCHAR(20),
     origem_pais VARCHAR(50),
-    origem_uf VARCHAR(30),
-    origem_cidade VARCHAR(50),
+    origem_uf VARCHAR(40),
+    origem_cidade VARCHAR(80),
     destino_data VARCHAR(20),
     destino_pais VARCHAR(50),
-    destino_uf VARCHAR(30),
-    destino_cidade VARCHAR(50),
-    meio_transporte VARCHAR(20),
+    destino_uf VARCHAR(40),
+    destino_cidade VARCHAR(80),
+    meio_transporte VARCHAR(50),
     numero_diarias VARCHAR(10),
     missao VARCHAR(5)
 ) ENGINE=InnoDB ROW_FORMAT=DYNAMIC;
 
 DROP TABLE IF EXISTS raw_viagem;
 CREATE TABLE raw_viagem (
-    id_processo_viagem VARCHAR(20),
+    id_viagem VARCHAR(20),
     num_proposta VARCHAR(20),
     situacao VARCHAR(20),
     viagem_urgente VARCHAR(5),
-    justificativa_urgencia VARCHAR(1200),
+    justificativa_urgencia_viagem VARCHAR(1200),
     cod_orgao_superior VARCHAR(20),
-    nome_orgao_superior VARCHAR(100),
+    nome_orgao_superior VARCHAR(255),
     cod_orgao_solicitante VARCHAR(20),
     nome_orgao_solicitante VARCHAR(120),
     cpf_viajante VARCHAR(20),
-    nome VARCHAR(80),
-    cargo VARCHAR(50),
+    nome_viajante VARCHAR(255),
+    cargo VARCHAR(255),
     funcao VARCHAR(30),
     descricao_funcao VARCHAR(50),
-    periodo_data_inicio VARCHAR(20),
-    periodo_data_fim VARCHAR(20),
-    destinos VARCHAR(1200),
-    motivo VARCHAR(1200),
-    valor_diarias VARCHAR(20),
-    valor_passagens VARCHAR(20),
-    valor_devolucao VARCHAR(20),
-    valor_outros_gastos VARCHAR(20)
+    data_inicio VARCHAR(20),
+    data_fim VARCHAR(20),
+    destinos VARCHAR(4000),
+    motivo VARCHAR(4000),
+    valor_diarias VARCHAR(30),
+    valor_passagens VARCHAR(30),
+    valor_devolucao VARCHAR(30),
+    valor_outros_gastos VARCHAR(30)
 ) ENGINE=InnoDB ROW_FORMAT=DYNAMIC;
 
 DROP TABLE IF EXISTS silver_viagem;
