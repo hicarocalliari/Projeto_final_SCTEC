@@ -13,12 +13,26 @@ from _MySQL.config import DRIVE_FILE_ID
 def teste():
     print ("TESTE")
 
+<<<<<<< Updated upstream
 def baixar_base_drive():
     """Realiza o Download da base de dados do Drive"""
     url = f"https://drive.google.com/uc?id={DRIVE_FILE_ID}"
-    destino = PASTA_DADOS / "viagens_2025_6meses.zip"
-    gdown.download(url, str(destino), quiet=False)
+=======
 
+def baixar_base_drive(): #fazer condição caso n esteja na pasta
+    
+    config.PASTA_DADOS.mkdir(exist_ok=True)
+>>>>>>> Stashed changes
+    destino = PASTA_DADOS / "viagens_2025_6meses.zip"
+    
+    
+    if destino.exists():
+        print ("O arquivo já foi baixado antes, não será necessário baixá-lo novamente")
+    else:
+        print ("Iniciando o Download...")
+        gdown.download(id=DRIVE_FILE_ID,output=str(destino))
+    
+    
 def localizar_zip():
     """Aponta para o viagens_2025_6meses.zip que foi feito o download do drive."""
     caminho = config.PASTA_DADOS / "viagens_2025_6meses.zip"

@@ -40,8 +40,8 @@ CREATE TABLE raw_passagem (
     cidade_destino_volta VARCHAR(50),
     valor_passagem VARCHAR(30),
     taxa_servico VARCHAR(30),
-    data_emissao_compra VARCHAR(20),
-    hora_emissao_compra VARCHAR(10)
+    data_emissao VARCHAR(20),
+    hora_emissao VARCHAR(10)
 ) ENGINE=InnoDB ROW_FORMAT=DYNAMIC;
 
 DROP TABLE IF EXISTS raw_trecho;
