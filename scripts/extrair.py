@@ -13,19 +13,12 @@ from _MySQL.config import DRIVE_FILE_ID
 def teste():
     print ("TESTE")
 
-<<<<<<< Updated upstream
-def baixar_base_drive():
-    """Realiza o Download da base de dados do Drive"""
-    url = f"https://drive.google.com/uc?id={DRIVE_FILE_ID}"
-=======
-
 def baixar_base_drive(): #fazer condição caso n esteja na pasta
     
     config.PASTA_DADOS.mkdir(exist_ok=True)
->>>>>>> Stashed changes
+
     destino = PASTA_DADOS / "viagens_2025_6meses.zip"
-    
-    
+
     if destino.exists():
         print ("O arquivo já foi baixado antes, não será necessário baixá-lo novamente")
     else:
