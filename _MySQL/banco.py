@@ -10,6 +10,7 @@ from mysql.connector import Error
 
 from _MySQL.config import MYSQL_CONFIG
 
+
 def conectar():
     """
     Abre uma conexao com o MySQL (no database configurado no .env) e a retorna.
@@ -34,6 +35,13 @@ def executar(conexao, sql):
     cursor.close()
 
 
+def consultar(conexao, sql):
+    cursor = conexao.cursor()
+    cursor.execute(sql)
+    resultado = cursor.fetchall()
+    cursor.close()
+    return resultado
+
 def inserir_em_lote(conexao, sql_insert, linhas):
     """
     Insere varias linhas de uma vez (mais rapido que uma a uma).
@@ -45,4 +53,3 @@ def inserir_em_lote(conexao, sql_insert, linhas):
     cursor.executemany(sql_insert, linhas)
     conexao.commit()
     cursor.close()
-

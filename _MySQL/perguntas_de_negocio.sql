@@ -9,10 +9,7 @@
 use transparencia;
 ####################################################################################
 #1- Os 5 órgãos com maior custo total? 
-SELECT 
-    *
-FROM
-    silver_viagem;
+
 SELECT 
     nome_orgao_superior, SUM(valor_total) AS custo_total
 FROM
@@ -25,14 +22,14 @@ LIMIT 5;
 #2- Os 3 destinos com maior custo médio por viagem? 
 
 SELECT 
-    destinos, AVG(valor_total) AS media
+    destinos, AVG(valor_total) AS custo_medio
 FROM
     silver_viagem
 WHERE
     destinos <> ''
 GROUP BY destinos
 HAVING COUNT(*) >= 30
-ORDER BY media DESC
+ORDER BY custo_medio DESC
 LIMIT 3;
 
 ####################################################################################
@@ -67,11 +64,11 @@ LIMIT 1;
 #5- Qual o meio de transporte mais usado nos trechos? 
 
 SELECT 
-    meio_transporte, COUNT(*) AS soma
+    meio_transporte, COUNT(*) AS quantidade
 FROM
     silver_trecho
 GROUP BY meio_transporte
-ORDER BY soma DESC
+ORDER BY quantidade DESC
 LIMIT 1;
 
 ####################################################################################
@@ -79,11 +76,11 @@ LIMIT 1;
 #6-  Qual UF de destino aparece em mais trechos? 
 
 SELECT 
-    destino_uf, COUNT(*) AS soma
+    destino_uf, COUNT(*) AS quantidade
 FROM
     silver_trecho
 GROUP BY destino_uf
-ORDER BY soma DESC
+ORDER BY quantidade DESC
 LIMIT 1;
 
 ####################################################################################
@@ -91,9 +88,9 @@ LIMIT 1;
 #7- Qual órgão pagou mais no total? 
 
 SELECT 
-    nome_orgao_pagador, SUM(valor) AS soma
+    nome_orgao_pagador, SUM(valor) AS total_pago
 FROM
     silver_pagamento
 GROUP BY nome_orgao_pagador
-ORDER BY soma DESC
+ORDER BY total_pago DESC
 LIMIT 1;
