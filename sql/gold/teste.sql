@@ -15,6 +15,8 @@ ORDER BY
     custo_medio DESC
 LIMIT 3;
 
+-> apresenta resultado diferente
+
 
 ###
 
@@ -30,6 +32,7 @@ GROUP BY
 ORDER BY custo_medio DESC
 LIMIT 3;
 
+-> resultado igual
 
 ###
 
@@ -49,7 +52,7 @@ GROUP BY
     t.destino_uf
 ORDER BY custo_medio DESC
 LIMIT 3;
-
+-> resultado igual
 
 ####
 
@@ -65,6 +68,7 @@ ORDER BY custo_medio DESC
 LIMIT 3;
 
 
+-> apresenta resultado diferente porém está errado pois não tem join
 ###
 
 
@@ -87,4 +91,5 @@ ORDER BY
 LIMIT 3;
 
 
+-> apresenta resultado diferente, igual ao primeiro
 ###
