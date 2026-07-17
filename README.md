@@ -38,6 +38,13 @@ Foi utilizada uma base de dados real, disponibilizada para download pelo portal 
     ├── gold
     └── silver
 ```
-## Estrutura da camada Bronze, onde estão presentes as tabelas RAW para ingestão das tabelas da base de dados fornecida:
+## Estrutura da Camada Bronze
+### Composta pelas tabelas Raw, responsáveis pela ingestão dos dados originais provenientes da fonte oficial, mantendo sua estrutura inicial e garantindo a rastreabilidade das informações.
 
 <img width="928" height="569" alt="image" src="https://github.com/user-attachments/assets/000d55d8-aacd-41d2-93d9-3dc30666283e" />
+
+## Estrutura da Camada Silver
+### Baseada nos dados da camada Bronze, aplicando tipagem correta, tratamento, padronização e enriquecimento das tabelas com novas informações relevantes.
+
+<img width="883" height="767" alt="image" src="https://github.com/user-attachments/assets/e10bbcb3-b978-4e67-b0b1-639e6dbcb6ec" />
+
