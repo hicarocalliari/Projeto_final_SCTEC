@@ -103,3 +103,5 @@ Foi utilizada uma base de dados real, disponibilizada para download pelo portal 
 <img width="337" height="138" alt="image" src="https://github.com/user-attachments/assets/62a2bb6d-2dfd-4785-a09d-365a704b8391" />
 
 5. Qual o meio de transporte mais usado nos trechos?
+<img width="792" height="515" alt="image" src="https://github.com/user-attachments/assets/c043a63e-9ff0-4169-bc96-e50786a39f04" />
+<img width="261" height="157" alt="image" src="https://github.com/user-attachments/assets/27effead-de31-4e94-a2bb-bb7cbd933e31" />
