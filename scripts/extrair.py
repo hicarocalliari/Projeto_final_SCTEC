@@ -1,19 +1,15 @@
 from pathlib import Path
 import sys
-import warnings
 import zipfile
 import pandas as pd
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import gdown
-from _MySQL import banco
-from _MySQL import config
-from _MySQL.config import PASTA_DADOS
-from _MySQL.config import DRIVE_FILE_ID
+from database import banco
+from database import config
+from database.config import PASTA_DADOS
+from database.config import DRIVE_FILE_ID
 
-def teste():
-    print ("TESTE")
-
-def baixar_base_drive(): #fazer condição caso n esteja na pasta
+def baixar_base_drive():
     
     config.PASTA_DADOS.mkdir(exist_ok=True)
 
@@ -24,8 +20,8 @@ def baixar_base_drive(): #fazer condição caso n esteja na pasta
     else:
         print ("Iniciando o Download...")
         gdown.download(id=DRIVE_FILE_ID,output=str(destino))
-    
-    
+
+
 def localizar_zip():
     """Aponta para o viagens_2025_6meses.zip que foi feito o download do drive."""
     caminho = config.PASTA_DADOS / "viagens_2025_6meses.zip"
@@ -69,8 +65,27 @@ def carregar_csv(conexao, zip_aberto, nome_csv, tabela):
             total += len(linhas)
 
     print("      ->", total, "linhas em", tabela)  
-  
 
-    
-    
-    
+
+def main():
+    print("=== FASE 1: EXTRACAO + CAMADA RAW ===\n")
+    print ("Realizando o Download da base de dados do Drive\n")
+    baixar_base_drive()
+    print ("\nRealizando a Ingestão dos dados nas suas respectivas tabelas RAW\n")
+    try:
+        conexao = banco.conectar()
+        caminho_zip = localizar_zip()
+
+        with zipfile.ZipFile(caminho_zip) as zip_aberto:
+            for arquivo in config.ARQUIVOS.values():
+                carregar_csv(
+                    conexao, zip_aberto, arquivo["csv"], arquivo["tabela_raw"]
+                )
+        conexao.close()
+        print("\n=== Camada RAW concluida com sucesso! ===")
+    except Exception as erro:
+        print("[ERRO] Algo deu errado:", erro)
+        raise
+
+if __name__ == "__main__":
+    main()

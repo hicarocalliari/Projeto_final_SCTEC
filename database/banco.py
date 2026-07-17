@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 from mysql.connector import Error
 
-from _MySQL.config import MYSQL_CONFIG
+from database.config import MYSQL_CONFIG
 
 
 def conectar():
@@ -41,6 +41,7 @@ def consultar(conexao, sql):
     resultado = cursor.fetchall()
     cursor.close()
     return resultado
+
 
 def inserir_em_lote(conexao, sql_insert, linhas):
     """
