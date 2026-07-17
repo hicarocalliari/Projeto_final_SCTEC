@@ -64,10 +64,6 @@ Foi utilizada uma base de dados real, disponibilizada para download pelo portal 
     O arquivo requirements.txt contém todos os pacotes necessários para execução do projeto, como pandas, matplotlib e demais bibliotecas utilizadas.
 
 ```
-
-
-
-
 ## Estrutura da Camada Bronze
 ### Composta pelas tabelas Raw, responsáveis pela ingestão dos dados originais provenientes da fonte oficial, mantendo sua estrutura inicial e garantindo a rastreabilidade das informações.
 
@@ -78,3 +74,32 @@ Foi utilizada uma base de dados real, disponibilizada para download pelo portal 
 
 <img width="883" height="767" alt="image" src="https://github.com/user-attachments/assets/e10bbcb3-b978-4e67-b0b1-639e6dbcb6ec" />
 
+## Perguntas a serem respondidas:
+1. Os 5 órgãos com maior custo total?
+2. Os 3 destinos com maior custo médio por viagem?
+3. A viagem de maior duração e seu custo total?
+4. Qual o tipo de pagamento com maior valor médio?
+5. Qual o meio de transporte mais usado nos trechos?
+6. Qual UF de destino aparece em mais trechos?
+7. Qual órgão pagou mais no total?
+
+## Respostas:
+
+1. Os 5 órgãos com maior custo total?
+
+<img width="1076" height="641" alt="image" src="https://github.com/user-attachments/assets/e90ba61b-8b7d-4837-a54a-9c7ae3b665f2" />
+<img width="624" height="196" alt="image" src="https://github.com/user-attachments/assets/6f506aad-e780-4eae-8fe1-5b399a228e57" />
+
+2. Os 3 destinos com maior custo médio por viagem?
+<img width="1077" height="639" alt="image" src="https://github.com/user-attachments/assets/cd7e972e-97ca-45a5-bfd8-e7cec61f8c7d" />
+<img width="356" height="133" alt="image" src="https://github.com/user-attachments/assets/dfdc7334-93ab-46fa-bced-5987ce365fa5" />
+
+3. A viagem de maior duração e seu custo total?
+<img width="1074" height="640" alt="image" src="https://github.com/user-attachments/assets/de294a6b-d536-4117-8bda-4789c791f9b9" />
+<img width="985" height="73" alt="image" src="https://github.com/user-attachments/assets/edced213-f881-4d69-b41e-6fa4eeafd3d2" />
+
+4. Qual o tipo de pagamento com maior valor médio?
+<img width="855" height="699" alt="image" src="https://github.com/user-attachments/assets/cb86fa61-53b0-435a-aea8-635710770281" />
+<img width="337" height="138" alt="image" src="https://github.com/user-attachments/assets/62a2bb6d-2dfd-4785-a09d-365a704b8391" />
+
+5. Qual o meio de transporte mais usado nos trechos?
