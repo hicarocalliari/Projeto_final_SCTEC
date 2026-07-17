@@ -105,3 +105,12 @@ Foi utilizada uma base de dados real, disponibilizada para download pelo portal 
 5. Qual o meio de transporte mais usado nos trechos?
 <img width="792" height="515" alt="image" src="https://github.com/user-attachments/assets/c043a63e-9ff0-4169-bc96-e50786a39f04" />
 <img width="261" height="157" alt="image" src="https://github.com/user-attachments/assets/27effead-de31-4e94-a2bb-bb7cbd933e31" />
+
+6. Qual UF de destino aparece em mais trechos?
+<img width="572" height="519" alt="image" src="https://github.com/user-attachments/assets/d6c80a18-0821-47c0-bb3b-c12a8b3a4753" />
+<img width="246" height="160" alt="image" src="https://github.com/user-attachments/assets/0dcad47f-25b7-4bf3-8274-588ed7fa7af1" />
+
+7. Qual órgão pagou mais no total?
+<img width="995" height="552" alt="image" src="https://github.com/user-attachments/assets/6f04bc1b-9372-4130-ae8a-4b956dba3549" />
+<img width="437" height="167" alt="image" src="https://github.com/user-attachments/assets/7eb8766b-6e15-41d5-9402-feecd797db8b" />
+
