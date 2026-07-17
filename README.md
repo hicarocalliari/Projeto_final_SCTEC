@@ -1,4 +1,4 @@
-## Projeto Final SCTEC - Hicaro Calliari Bottenberg - SCTEC - ANÁLISE DE DADOS T2
+## Projeto Final SCTEC Módulo 01 - Hicaro Calliari Bottenberg - ANÁLISE DE DADOS T2
 
 Projeto de Análise de Dados desenvolvido com o objetivo de aplicar, na prática, os conhecimentos adquiridos na construção de um pipeline de dados completo (ETL) e na implementação da Arquitetura Medallion, utilizando as camadas Raw, Silver e Gold com Python e SQL.
 
