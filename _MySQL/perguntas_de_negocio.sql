@@ -64,11 +64,11 @@ LIMIT 1;
 #5- Qual o meio de transporte mais usado nos trechos? 
 
 SELECT 
-    meio_transporte, COUNT(*) AS quantidade
+    meio_transporte, COUNT(DISTINCT id_viagem) AS qtde_viagens
 FROM
     silver_trecho
 GROUP BY meio_transporte
-ORDER BY quantidade DESC
+ORDER BY qtde_viagens DESC
 LIMIT 1;
 
 ####################################################################################
