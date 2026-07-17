@@ -38,6 +38,36 @@ Foi utilizada uma base de dados real, disponibilizada para download pelo portal 
     ├── gold
     └── silver
 ```
+## Como Executar o Projeto
+
+```text
+1º Clone o repositório através da URL:
+    https://github.com/hicarocalliari/Projeto_final_SCTEC.git
+
+2º Acesse a pasta do projeto e navegue até o diretório:
+    Projeto_final_SCTEC
+
+3º Crie e ative o ambiente virtual (venv):
+
+    Linux:
+        python3 -m venv venv
+        source venv/bin/activate
+
+    Windows (Prompt de Comando):
+        python -m venv venv
+        venv\Scripts\activate
+
+4º Instale as dependências necessárias executando o comando:
+
+    pip install -r requirements.txt
+
+    O arquivo requirements.txt contém todos os pacotes necessários para execução do projeto, como pandas, matplotlib e demais bibliotecas utilizadas.
+
+```
+
+
+
+
 ## Estrutura da Camada Bronze
 ### Composta pelas tabelas Raw, responsáveis pela ingestão dos dados originais provenientes da fonte oficial, mantendo sua estrutura inicial e garantindo a rastreabilidade das informações.
 
