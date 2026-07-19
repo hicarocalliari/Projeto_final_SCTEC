@@ -95,7 +95,7 @@ CREATE TABLE silver_viagem (
     situacao VARCHAR(50),
     viagem_urgente VARCHAR(5),
     cod_orgao_superior VARCHAR(20),
-    nome_orgao_superior VARCHAR(255),
+    nome_orgao_superior VARCHAR(255) NOT NULL,
     nome_viajante VARCHAR(255),
     cargo VARCHAR(255),
     data_inicio DATE,
@@ -127,7 +127,7 @@ CREATE TABLE silver_passagem (
     taxa_servico DECIMAL(10 , 2 ),
     data_emissao DATE,
     CONSTRAINT pk_silver_passagem PRIMARY KEY (id_passagem),
-    CONSTRAINT fk_silver_passagem FOREIGN KEY (id_viagem)
+    CONSTRAINT fk_silver_passagem_viagem FOREIGN KEY (id_viagem)
         REFERENCES silver_viagem (id_viagem),
     CONSTRAINT ck_valor_passagem CHECK (valor_passagem >= 0),
     CONSTRAINT ck_taxa_servico CHECK (taxa_servico >= 0)
@@ -143,7 +143,7 @@ CREATE TABLE silver_pagamento (
     tipo_pagamento VARCHAR(50) NOT NULL,
     valor DECIMAL(10 , 2 ),
     CONSTRAINT pk_silver_pagamento PRIMARY KEY (id_pagamento),
-    CONSTRAINT fk_silver_pagamento FOREIGN KEY (id_viagem)
+    CONSTRAINT fk_silver_pagamento_viagem FOREIGN KEY (id_viagem)
 		REFERENCES silver_viagem(id_viagem),
 	CONSTRAINT ck_valor_pagamento CHECK (valor >=0)
 )ENGINE=InnoDB ROW_FORMAT=DYNAMIC;
@@ -162,9 +162,10 @@ CREATE TABLE silver_trecho (
     meio_transporte VARCHAR(50),
     numero_diarias DECIMAL(10 , 2 ),
     CONSTRAINT pk_silver_trecho PRIMARY KEY (id_trecho),
-    CONSTRAINT fk_silver_trecho FOREIGN KEY (id_viagem)
+    CONSTRAINT fk_silver_trecho_viagem FOREIGN KEY (id_viagem)
         REFERENCES silver_viagem (id_viagem),
-	CONSTRAINT ck_numero_diarias CHECK (numero_diarias >=0)
+	CONSTRAINT ck_numero_diarias CHECK (numero_diarias >= 0),
+    CONSTRAINT uq_id_viagem_sequencia UNIQUE (id_viagem,sequencia_trecho)
 )ENGINE=InnoDB ROW_FORMAT=DYNAMIC;
 
 

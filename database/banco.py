@@ -36,6 +36,25 @@ def executar(conexao, sql):
 
 
 def consultar(conexao, sql):
+    """
+    Executa uma consulta SQL e retorna todos os registros encontrados.
+
+    A função cria um cursor, executa a consulta SQL informada,
+    recupera todos os registros utilizando `fetchall()` e fecha o
+    cursor antes de retornar os resultados.
+
+    Args:
+        conexao: Objeto de conexão ativo com o banco de dados.
+        sql (str): Consulta SQL a ser executada.
+
+    Returns:
+        list[tuple]: Lista de tuplas contendo os registros retornados
+            pela consulta.
+
+    Raises:
+        Exception: Repassa qualquer exceção gerada durante a execução
+            da consulta SQL.
+    """
     cursor = conexao.cursor()
     cursor.execute(sql)
     resultado = cursor.fetchall()

@@ -24,12 +24,42 @@ lista_carga_silver = [
 
 
 def carregar_sql(caminho):
+    """
+    Lê um arquivo .sql e retorna seu conteúdo como texto.
+
+    O SQL retornado pode ser utilizado para executar consultas,
+    criar tabelas, views ou outras instruções no banco de dados.
+
+    Args:
+        caminho (str | Path): Caminho do arquivo SQL.
+
+    Returns:
+        str: Texto contendo o comando SQL.
+    """
     with open(caminho, "r", encoding="utf-8") as arquivo:
         return arquivo.read()
 
 
 def limpar_silver(conexao, lista_silver):
+    """
+    Remove todos os registros das tabelas da camada Silver.
 
+    A função percorre a lista de tabelas informada e executa um comando
+    `DELETE` em cada uma delas, preservando sua estrutura. Ao final,
+    exibe a quantidade de tabelas que tiveram seus dados removidos.
+
+    Args:
+        conexao: Objeto de conexão ativo com o banco de dados.
+        lista_silver (list[str]): Lista contendo os nomes das tabelas
+            da camada Silver que terão seus registros excluídos.
+
+    Returns:
+        None
+
+    Raises:
+        Exception: Repassa qualquer exceção gerada durante a execução
+            dos comandos SQL.
+    """
     print("Iniciando a limpeza das tabelas Silver...")
     contador_silver = 0
     for silver in lista_silver:
