@@ -13,31 +13,25 @@ Foi utilizada uma base de dados real, disponibilizada para download pelo portal 
 * Limpar e organiza os dados na camada Silver, com tipagem correta e integridade referencial entre as tabelas , eliminando inconsistências, duplicidades e erros de formato;
 * Responder perguntas de negócio reais na camada Gold, tudo isso apoiado por métricas e gráficos que tornam a informação acessível para quem for tomar decisões.
 
+## Qual problema resolve?
+
+Este projeto resolve o desafio de transformar dados públicos brutos em informações estruturadas e confiáveis para análise, através da construção de um pipeline de dados organizado em camadas.
+
+O pipeline permite:
+
+- Realizar a ingestão dos dados para a camada Bronze (`Raw`), preservando os dados originais e garantindo rastreabilidade para auditoria e futuras análises;
+- Estruturar e padronizar os dados na camada Silver, realizando tratamentos de tipos, conversões, validações e relacionamentos entre tabelas através de chaves primárias e estrangeiras;
+- Manter os dados tratados em uma estrutura analítica confiável, servindo como base para a criação dos indicadores e análises da camada Gold;
+- Criar tabelas analíticas e views para disponibilizar informações de negócio de forma simplificada, reutilizável e otimizada para consultas.
+  
+
 ## Tecnologias Utilizadas
 - Python
 - Pandas
+- Matplotlib
 - Jupyter Notebook
+- Banco de dados Mysql
 
-## Estrutura do projeto
-```text
-├── data
-│   └── viagens_2025_6meses.zip
-├── database
-│   ├── banco.py
-│   ├── config.py
-│   └── __pycache__
-├── notebooks
-│   └── analise.ipynb
-├── README.md
-├── scripts
-│   ├── extrair.py
-│   ├── __pycache__
-│   └── transformar.py
-├── sql
-    ├── ddl
-    ├── gold
-    └── silver
-```
 ## Como Executar o Projeto
 
 ```text
@@ -63,14 +57,78 @@ Foi utilizada uma base de dados real, disponibilizada para download pelo portal 
 
     O arquivo requirements.txt contém todos os pacotes necessários para execução do projeto, como pandas, matplotlib e demais bibliotecas utilizadas.
 
+5º No arquivo ".env.example"
+
+    Edite o campo MYSQL_PASSWORD=sua_senha_aqui
+    Renomeie o arquivo para .env
+    Salve a Alteração
+    
+6º Rode os arquivos na seguinte ordem:
+    1ª - extrair.py
+    2ª - transformar.py
+    3ª - analise.ipynb
+    
 ```
+
+## Estrutura do projeto
+```text
+├── data
+│   └── viagens_2025_6meses.zip
+├── database
+│   ├── banco.py
+│   ├── config.py
+│   └── __pycache__
+├── img
+│   ├── grafico_1.png
+│   ├── grafico_2.png
+│   ├── grafico_3.png
+│   ├── grafico_4.png
+│   ├── grafico_5.png
+│   ├── grafico_6.png
+│   └── grafico_7.png
+├── notebooks
+│   └── analise.ipynb
+├── README.md
+├── requirements.txt
+├── scripts
+│   ├── extrair.py
+│   ├── __pycache__
+│   └── transformar.py
+├── sql
+    ├── ddl
+    ├── gold
+    └── silver
+```
+
 ## Estrutura da Camada Bronze
 ### Composta pelas tabelas Raw, responsáveis pela ingestão dos dados originais provenientes da fonte oficial, mantendo sua estrutura inicial e garantindo a rastreabilidade das informações.
+
+| **Tabela** | **Linhas carregadas** |
+|---|---|
+| raw_viagem | 341860 linhas  |
+| raw_pagamento | 606916 linhas |
+| raw_passagem | 167260 linhas |
+| raw_trecho | 763349 linhas |
 
 <img width="928" height="569" alt="image" src="https://github.com/user-attachments/assets/000d55d8-aacd-41d2-93d9-3dc30666283e" />
 
 ## Estrutura da Camada Silver
 ### Baseada nos dados da camada Bronze, aplicando tipagem correta, tratamento, padronização e enriquecimento das tabelas com novas informações relevantes.
+
+| **Transformação Raw → Silver** | **Resultado** |
+|---|---|
+| Chaves primárias | Criadas chaves primárias nas tabelas Silver (`id_viagem`, `id_passagem`, `id_pagamento` e `id_trecho`) |
+| Chaves estrangeiras | Criados relacionamentos entre tabelas através de `id_viagem` referenciando `silver_viagem` |
+| Coluna `valor_total` | Nova coluna criada em `silver_viagem`, calculada a partir dos valores de diárias, passagens, devolução e outros gastos |
+| Coluna `duracao_dias` | Nova coluna criada em `silver_viagem`, calculada a partir das datas de início e fim da viagem |
+| Tipos de dados | Conversão de campos `VARCHAR` da Raw para tipos adequados na Silver (`DATE`, `DECIMAL` e `INT`) |
+| Campos monetários | Conversão dos valores financeiros de `VARCHAR` para `DECIMAL(10,2)` |
+| Datas | Conversão dos campos de data de `VARCHAR` para `DATE` |
+| Restrições NOT NULL | Adicionada obrigatoriedade em campos essenciais (`id_viagem`, `nome_orgao_superior` e `tipo_pagamento`) |
+| Constraints CHECK | Criadas validações para impedir valores negativos em campos financeiros e quantidade de diárias |
+| Identificadores automáticos | Criados campos `AUTO_INCREMENT` para `id_passagem`, `id_pagamento` e `id_trecho` |
+| Unicidade dos trechos | Criada constraint UNIQUE para evitar duplicidade de sequência de trechos por viagem (`id_viagem`, `sequencia_trecho`) |
+| Normalização dos dados | Separação das informações em tabelas de viagem, passagem, pagamento e trecho |
 
 <img width="883" height="767" alt="image" src="https://github.com/user-attachments/assets/e10bbcb3-b978-4e67-b0b1-639e6dbcb6ec" />
 
@@ -83,34 +141,44 @@ Foi utilizada uma base de dados real, disponibilizada para download pelo portal 
 6. Qual UF de destino aparece em mais trechos?
 7. Qual órgão pagou mais no total?
 
-## Respostas:
+# Respostas:
 
-1. Os 5 órgãos com maior custo total?
+## 1. Os 5 órgãos com maior custo total?
 
-<img width="1076" height="641" alt="image" src="https://github.com/user-attachments/assets/e90ba61b-8b7d-4837-a54a-9c7ae3b665f2" />
-<img width="624" height="196" alt="image" src="https://github.com/user-attachments/assets/6f506aad-e780-4eae-8fe1-5b399a228e57" />
+![Os 5 órgãos com maior custo total](img/grafico_1.png)
 
-2. Os 3 destinos com maior custo médio por viagem?
-<img width="1077" height="639" alt="image" src="https://github.com/user-attachments/assets/cd7e972e-97ca-45a5-bfd8-e7cec61f8c7d" />
-<img width="356" height="133" alt="image" src="https://github.com/user-attachments/assets/dfdc7334-93ab-46fa-bced-5987ce365fa5" />
+Realizando uma consulta SQL utilizando os dados tratados e organizados da tabela silver_viagem, foi realizada a soma da coluna valor_total para identificar o custo total. O resultado obtido foi utilizado para a criação do gráfico apresentado acima, além da geração de um DataFrame para facilitar a visualização e análise dos valores calculados.
 
-3. A viagem de maior duração e seu custo total?
-<img width="1074" height="640" alt="image" src="https://github.com/user-attachments/assets/de294a6b-d536-4117-8bda-4789c791f9b9" />
-<img width="985" height="73" alt="image" src="https://github.com/user-attachments/assets/edced213-f881-4d69-b41e-6fa4eeafd3d2" />
+![Os 5 órgãos com maior custo total](img/df_pergunta_1.png)
 
-4. Qual o tipo de pagamento com maior valor médio?
-<img width="855" height="699" alt="image" src="https://github.com/user-attachments/assets/cb86fa61-53b0-435a-aea8-635710770281" />
-<img width="337" height="138" alt="image" src="https://github.com/user-attachments/assets/62a2bb6d-2dfd-4785-a09d-365a704b8391" />
+## 2. Os 3 destinos com maior custo médio por viagem?
+   
+![Os 3 destinos com maior custo médio por viagem](img/grafico_2.png)
 
-5. Qual o meio de transporte mais usado nos trechos?
-<img width="792" height="515" alt="image" src="https://github.com/user-attachments/assets/c043a63e-9ff0-4169-bc96-e50786a39f04" />
-<img width="261" height="157" alt="image" src="https://github.com/user-attachments/assets/27effead-de31-4e94-a2bb-bb7cbd933e31" />
+![Os 3 destinos com maior custo médio por viagem](img/df_pergunta_2.png)
+## 3. A viagem de maior duração e seu custo total?
+   
+![A viagem de maior duração e seu custo total](img/grafico_3.png)
 
-6. Qual UF de destino aparece em mais trechos?
-<img width="572" height="519" alt="image" src="https://github.com/user-attachments/assets/d6c80a18-0821-47c0-bb3b-c12a8b3a4753" />
-<img width="246" height="160" alt="image" src="https://github.com/user-attachments/assets/0dcad47f-25b7-4bf3-8274-588ed7fa7af1" />
+## 4. Qual o tipo de pagamento com maior valor médio?
 
-7. Qual órgão pagou mais no total?
-<img width="995" height="552" alt="image" src="https://github.com/user-attachments/assets/6f04bc1b-9372-4130-ae8a-4b956dba3549" />
-<img width="437" height="167" alt="image" src="https://github.com/user-attachments/assets/7eb8766b-6e15-41d5-9402-feecd797db8b" />
+![Tipo de pagamento com maior valor médio](img/grafico_4.png)
+
+## 5. Qual o meio de transporte mais usado nos trechos?
+
+![Meio de transporte mais usado nos trechos](img/grafico_5.png)
+
+## 6. Qual UF de destino aparece em mais trechos?
+
+![UF de destino aparece em mais trechos](img/grafico_6.png)
+
+## 7. Qual órgão pagou mais no total?
+
+![Órgão pagou mais no total](img/grafico_7.png)
+
+
+
+
+
+
 
