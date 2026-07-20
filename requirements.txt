@@ -1,5 +1,7 @@
-gdown==6.1.0
-mysql_connector_repackaged==0.3.1
-pandas==3.0.3
-matplotlib==3.11.0
-dataframe_image==0.2.7
+gdown
+mysql-connector-python
+pandas
+matplotlib
+dataframe_image
+ipykernel
+squarify
