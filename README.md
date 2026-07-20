@@ -79,13 +79,7 @@ O pipeline permite:
 │   ├── config.py
 │   └── __pycache__
 ├── img
-│   ├── grafico_1.png
-│   ├── grafico_2.png
-│   ├── grafico_3.png
-│   ├── grafico_4.png
-│   ├── grafico_5.png
-│   ├── grafico_6.png
-│   └── grafico_7.png
+│   ├── graficos
 ├── notebooks
 │   └── analise.ipynb
 ├── README.md
@@ -156,29 +150,53 @@ Realizando uma consulta SQL utilizando os dados tratados e organizados da tabela
 ![Os 3 destinos com maior custo médio por viagem](img/grafico_2.png)
 
 ![Os 3 destinos com maior custo médio por viagem](img/df_pergunta_2.png)
+
 ## 3. A viagem de maior duração e seu custo total?
    
 ![A viagem de maior duração e seu custo total](img/grafico_3.png)
+
+![A viagem de maior duração e seu custo total](img/df_pergunta_3.png)
 
 ## 4. Qual o tipo de pagamento com maior valor médio?
 
 ![Tipo de pagamento com maior valor médio](img/grafico_4.png)
 
+![Tipo de pagamento com maior valor médio](img/df_pergunta_4.png)
+
 ## 5. Qual o meio de transporte mais usado nos trechos?
 
 ![Meio de transporte mais usado nos trechos](img/grafico_5.png)
+
+![Meio de transporte mais usado nos trechos](img/df_pergunta_5.png)
 
 ## 6. Qual UF de destino aparece em mais trechos?
 
 ![UF de destino aparece em mais trechos](img/grafico_6.png)
 
+![UF de destino aparece em mais trechos](img/df_pergunta_6.png)
+
 ## 7. Qual órgão pagou mais no total?
 
 ![Órgão pagou mais no total](img/grafico_7.png)
 
+![Órgão pagou mais no total](img/df_pergunta_7.png)
 
+## 8. Qual meio de transporte possui maior custo medio viagem?
 
+![meio_transporte_maior_custo_medio_viagem](img/grafico_9.png)
 
+![meio_transporte_maior_custo_medio_viagem](img/df_pergunta_9.png)
 
+## 9. Destinos com maior custo total
+
+![destinos_maior_custo_total](img/grafico_9.png)
+
+![destinos_maior_custo_total](img/df_pergunta_9.png)
+
+## 10. Viajantes com maior custo total
+
+![viajantes_maior_custo_total](img/grafico_10.png)
+
+![viajantes_maior_custo_total](img/df_pergunta_10.png)
 
 
