@@ -247,3 +247,21 @@ Os dados disponibilizados na camada `Gold` servem como base para análises, iden
 ![viajantes_maior_custo_total](img/df_pergunta_10.png)
 
 # Conclusões
+
+Com base nas análises realizadas sobre os dados da camada Silver, foi possível identificar os seguintes pontos:
+
+1. Os gastos com viagens encontram-se concentrados em alguns órgãos, com destaque para os órgãos relacionados à Segurança Pública.
+2. O uso de veículos oficiais representa o meio de transporte mais utilizado nas viagens analisadas.
+3. São Paulo está entre os destinos com maior frequência de viagens, demonstrando sua relevância nas atividades administrativas.
+4. Brasília apresentou o maior volume de gastos com viagens, indicando seu papel como principal destino para deslocamentos institucionais.
+5. Foram identificados registros classificados como **SIGILOSO**, **SEM INFORMAÇÃO** e **NÃO INFORMADO**, evidenciando limitações na disponibilidade de alguns dados e a necessidade de considerar essas ocorrências durante as análises.
+
+# Melhorias Futuras
+
+Como evolução do projeto, podem ser implementadas as seguintes melhorias:
+
+* Desenvolvimento de dashboards interativos no **Power BI**, permitindo a visualização dinâmica dos indicadores e facilitando a análise dos dados.
+* Implementação de uma ferramenta de orquestração de pipelines (como Apache Airflow), automatizando a execução dos processos de extração, transformação e carga (ETL).
+* Agendamento da atualização automática dos dados, garantindo que as análises reflitam informações sempre atualizadas.
+* Inclusão de novos indicadores e métricas analíticas para ampliar a capacidade de monitoramento e apoio à tomada de decisão.
+
