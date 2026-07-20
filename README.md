@@ -110,26 +110,24 @@ O pipeline permite:
 
 ## Estrutura do projeto
 ```text
-├── data
-│   └── viagens_2025_6meses.zip
 ├── database
 │   ├── banco.py
-│   ├── config.py
-│   └── __pycache__
+│   └── config.py
 ├── img
-│   ├── graficos
+│   └──gráficos
 ├── notebooks
 │   └── analise.ipynb
-├── README.md
-├── requirements.txt
 ├── scripts
 │   ├── extrair.py
 │   ├── __pycache__
 │   └── transformar.py
 ├── sql
-    ├── ddl
-    ├── gold
-    └── silver
+│   ├── ddl
+│   ├── gold
+│   └── silver
+├── README.md
+├── requirements.txt
+└── .env.example
 ```
 
 ## Estrutura da Camada Bronze
