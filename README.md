@@ -82,7 +82,7 @@ O pipeline permite:
      ```text
      MYSQL_PASSWORD=sua_senha_aqui
      ```
-
+     
    * Renomeie o arquivo para `.env`;
 
    * Salve as alterações.
@@ -165,6 +165,15 @@ A camada `Gold` foi construída a partir dos dados previamente tratados e padron
 Para a construção dessas estruturas, foram utilizadas consultas SQL com operações como `JOIN` e `GROUP BY`, permitindo a integração das tabelas por meio de suas chaves primárias e estrangeiras, bem como a realização de agregações necessárias para responder às perguntas de negócio.
 
 Os dados disponibilizados na camada `Gold` servem como base para análises, identificação de padrões, extração de indicadores e geração de insights, proporcionando uma visão consolidada e otimizada para a tomada de decisão.
+
+<img width="1006" height="563" alt="image" src="https://github.com/user-attachments/assets/68c4cc23-52a4-485c-b3f5-4d092c0178e6" />
+
+| **Tabela** | **View** |
+|---|---|
+| gold_top3_destinos_custo__medio | vw_top3_destinos_custo__medio |
+| gold_viajantes_maior_custo_total | vw_viajantes_maior_custo_total |
+| gold_meio_transporte_maior_custo_medio_viagem | vw_meio_transporte_maior_custo_medio_viagem  |
+| gold_destinos_maior_custo_total | vw_destinos_maior_custo_total |
 
 ## Perguntas a serem respondidas:
 1. Os 5 órgãos com maior custo total?
