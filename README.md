@@ -34,40 +34,78 @@ O pipeline permite:
 
 ## Como Executar o Projeto
 
-```text
-1º Clone o repositório através da URL:
-    https://github.com/hicarocalliari/Projeto_final_SCTEC.git
 
-2º Acesse a pasta do projeto e navegue até o diretório:
-    Projeto_final_SCTEC
+## Como executar o projeto
 
-3º Crie e ative o ambiente virtual (venv):
+1. Clone o repositório:
 
-    Linux:
-        python3 -m venv venv
-        source venv/bin/activate
+   ```bash
+   git clone https://github.com/hicarocalliari/Projeto_final_SCTEC.git
+   ```
 
-    Windows (Prompt de Comando):
-        python -m venv venv
-        venv\Scripts\activate
+2. Acesse a pasta do projeto:
 
-4º Instale as dependências necessárias executando o comando:
+   ```bash
+   cd Projeto_final_SCTEC
+   ```
 
-    pip install -r requirements.txt
+3. Crie e ative o ambiente virtual (venv).
 
-    O arquivo requirements.txt contém todos os pacotes necessários para execução do projeto, como pandas, matplotlib e demais bibliotecas utilizadas.
+   **Linux**
 
-5º No arquivo ".env.example"
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
 
-    Edite o campo MYSQL_PASSWORD=sua_senha_aqui
-    Renomeie o arquivo para .env
-    Salve a Alteração
-    
-6º Rode os arquivos na seguinte ordem:
-    1ª - extrair.py
-    2ª - transformar.py
-    3ª - analise.ipynb
-    
+   **Windows (Prompt de Comando)**
+
+   ```cmd
+   python -m venv venv
+   venv\Scripts\activate
+   ```
+
+4. Instale as dependências do projeto:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+   O arquivo `requirements.txt` contém todas as bibliotecas necessárias para a execução do projeto, incluindo o **ipykernel**, utilizado para executar o notebook no ambiente virtual.
+
+5. Configure as variáveis de ambiente.
+
+   * Abra o arquivo `env.example`;
+
+   * Altere o valor de:
+
+     ```text
+     MYSQL_PASSWORD=sua_senha_aqui
+     ```
+
+   * Renomeie o arquivo para `.env`;
+
+   * Salve as alterações.
+
+6. Crie o banco de dados no MySQL.
+
+   Na pasta `sql/ddl` encontra-se o arquivo `criar_banco.sql`, responsável por criar o banco de dados e todas as tabelas necessárias para a execução do projeto.
+
+7. Execute os scripts na seguinte ordem:
+
+   1. `scripts/extrair.py`
+   2. `scripts/transformar.py`
+
+8. Abra o arquivo `notebooks/analise.ipynb` no Visual Studio Code.
+
+9. Selecione o kernel do ambiente virtual.
+
+   * Clique em **Select Kernel** (ou no nome do kernel exibido no canto superior direito do notebook);
+   * Escolha o interpretador correspondente ao ambiente virtual (`venv`);
+   * Caso seja solicitado, selecione o kernel associado ao ambiente criado.
+
+10. Execute todas as células do notebook `notebooks/analise.ipynb` na ordem em que estão organizadas.
+
 ```
 
 ## Estrutura do projeto
@@ -109,6 +147,8 @@ O pipeline permite:
 ## Estrutura da Camada Silver
 ### Baseada nos dados da camada Bronze, aplicando tipagem correta, tratamento, padronização e enriquecimento das tabelas com novas informações relevantes.
 
+<img width="883" height="767" alt="image" src="https://github.com/user-attachments/assets/e10bbcb3-b978-4e67-b0b1-639e6dbcb6ec" />
+
 | **Transformação Raw → Silver** | **Resultado** |
 |---|---|
 | Chaves primárias | Criadas chaves primárias nas tabelas Silver (`id_viagem`, `id_passagem`, `id_pagamento` e `id_trecho`) |
@@ -124,7 +164,13 @@ O pipeline permite:
 | Unicidade dos trechos | Criada constraint UNIQUE para evitar duplicidade de sequência de trechos por viagem (`id_viagem`, `sequencia_trecho`) |
 | Normalização dos dados | Separação das informações em tabelas de viagem, passagem, pagamento e trecho |
 
-<img width="883" height="767" alt="image" src="https://github.com/user-attachments/assets/e10bbcb3-b978-4e67-b0b1-639e6dbcb6ec" />
+## Estrutura da Camada Gold
+
+A camada `Gold` foi construída a partir dos dados previamente tratados e padronizados na camada `Silver`. Nessa etapa, foram criadas tabelas analíticas e suas respectivas `views`, destinadas à consulta e ao consumo dos dados.
+
+Para a construção dessas estruturas, foram utilizadas consultas SQL com operações como `JOIN` e `GROUP BY`, permitindo a integração das tabelas por meio de suas chaves primárias e estrangeiras, bem como a realização de agregações necessárias para responder às perguntas de negócio.
+
+Os dados disponibilizados na camada `Gold` servem como base para análises, identificação de padrões, extração de indicadores e geração de insights, proporcionando uma visão consolidada e otimizada para a tomada de decisão.
 
 ## Perguntas a serem respondidas:
 1. Os 5 órgãos com maior custo total?
@@ -134,14 +180,15 @@ O pipeline permite:
 5. Qual o meio de transporte mais usado nos trechos?
 6. Qual UF de destino aparece em mais trechos?
 7. Qual órgão pagou mais no total?
+8. Qual meio de transporte possui maior custo medio viagem?
+9. Destinos com maior custo total ?
+10. Viajantes com maior custo total ?
 
 # Respostas:
 
 ## 1. Os 5 órgãos com maior custo total?
 
 ![Os 5 órgãos com maior custo total](img/grafico_1.png)
-
-Realizando uma consulta SQL utilizando os dados tratados e organizados da tabela silver_viagem, foi realizada a soma da coluna valor_total para identificar o custo total. O resultado obtido foi utilizado para a criação do gráfico apresentado acima, além da geração de um DataFrame para facilitar a visualização e análise dos valores calculados.
 
 ![Os 5 órgãos com maior custo total](img/df_pergunta_1.png)
 
@@ -199,4 +246,4 @@ Realizando uma consulta SQL utilizando os dados tratados e organizados da tabela
 
 ![viajantes_maior_custo_total](img/df_pergunta_10.png)
 
-
+# Conclusões
