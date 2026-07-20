@@ -57,13 +57,16 @@ O pipeline permite:
 
     O arquivo requirements.txt contém todos os pacotes necessários para execução do projeto, como pandas, matplotlib e demais bibliotecas utilizadas.
 
-5º No arquivo ".env.example"
+5º No arquivo "env.example"
 
     Edite o campo MYSQL_PASSWORD=sua_senha_aqui
     Renomeie o arquivo para .env
     Salve a Alteração
-    
-6º Rode os arquivos na seguinte ordem:
+
+6º Crie o banco de dados no mysql Workbench 
+    Na pasta sql/ddl , você encontrará o arquivo "criar_banco.sql", que possuí todas as estruturas das tabelas necessárias
+  
+7º Rode os arquivos na seguinte ordem:
     1ª - extrair.py
     2ª - transformar.py
     3ª - analise.ipynb
