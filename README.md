@@ -1,4 +1,13 @@
-## Projeto Final SCTEC Módulo 01 - Hicaro Calliari Bottenberg - ANÁLISE DE DADOS T2
+# Projeto Final SCTEC — Análise de Dados
+
+**Aluno:** Hicaro Calliari Bottenberg
+
+**Turma:** T2
+
+![Python](https://img.shields.io/badge/Python-3.13-blue)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-orange)
+![Pandas](https://img.shields.io/badge/Pandas-2.x-purple)
+![License](https://img.shields.io/badge/license-MIT-green)
 
 Projeto de Análise de Dados desenvolvido com o objetivo de aplicar, na prática, os conhecimentos adquiridos na construção de um pipeline de dados completo (ETL) e na implementação da Arquitetura Medallion, utilizando as camadas Raw, Silver e Gold com Python e SQL.
 
@@ -6,11 +15,21 @@ O projeto contempla todas as etapas do fluxo de dados, desde a extração e inge
 
 Foi utilizada uma base de dados real, disponibilizada para download pelo portal do Senai, composta por informações provenientes de quatro tabelas do Portal da Transparência. Os dados inicialmente desestruturados passaram por processos de limpeza, padronização, integração e organização, resultando em uma estrutura analítica preparada para consultas e geração de indicadores.
 
+## Resumo
+
+- 4 tabelas Raw
+- 4 tabelas Silver
+- 4 tabelas Gold
+- 10 análises de negócio
+- Arquitetura Medallion
+
+<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/e4faf941-e1d8-43cd-8f8d-61e1a7fdc095" />
+
 ## OBJETIVO
 
 * Baixar os dados de Viagens a Serviço direto da fonte oficial, sem intervenção manual;
 * Preservar o dado original fielmente na camada Raw, garantindo rastreabilidade e auditoria de qualquer transformação futura;
-* Limpar e organiza os dados na camada Silver, com tipagem correta e integridade referencial entre as tabelas , eliminando inconsistências, duplicidades e erros de formato;
+* Limpar e organizar os dados na camada Silver, com tipagem correta e integridade referencial entre as tabelas , eliminando inconsistências, duplicidades e erros de formato;
 * Responder perguntas de negócio reais na camada Gold, tudo isso apoiado por métricas e gráficos que tornam a informação acessível para quem for tomar decisões.
 
 ## Qual problema resolve?
@@ -24,16 +43,12 @@ O pipeline permite:
 - Manter os dados tratados em uma estrutura analítica confiável, servindo como base para a criação dos indicadores e análises da camada Gold;
 - Criar tabelas analíticas e views para disponibilizar informações de negócio de forma simplificada, reutilizável e otimizada para consultas.
   
-
 ## Tecnologias Utilizadas
 - Python
 - Pandas
 - Matplotlib
 - Jupyter Notebook
 - Banco de dados Mysql
-
-## Como Executar o Projeto
-
 
 ## Como executar o projeto
 
@@ -106,21 +121,16 @@ O pipeline permite:
 
 ## Estrutura do projeto
 ```text
-├── database
-│   ├── banco.py
-│   └── config.py
-├── img
-│   └──gráficos
-├── notebooks
-│   └── analise.ipynb
-├── scripts
-│   ├── extrair.py
-│   ├── __pycache__
-│   └── transformar.py
-├── sql
-│   ├── ddl
-│   ├── gold
-│   └── silver
+Projeto_final_SCTEC
+│
+├── database/
+├── img/
+├── notebooks/
+├── scripts/
+├── sql/
+│   ├── ddl/
+│   ├── silver/
+│   └── gold/
 ├── README.md
 ├── requirements.txt
 └── .env.example
@@ -175,7 +185,7 @@ Os dados disponibilizados na camada `Gold` servem como base para análises, iden
 | gold_meio_transporte_maior_custo_medio_viagem | vw_meio_transporte_maior_custo_medio_viagem  |
 | gold_destinos_maior_custo_total | vw_destinos_maior_custo_total |
 
-## Perguntas a serem respondidas:
+## ## Perguntas de Negócio a serem respondidas:
 1. Os 5 órgãos com maior custo total?
 2. Os 3 destinos com maior custo médio por viagem?
 3. A viagem de maior duração e seu custo total?
@@ -183,11 +193,11 @@ Os dados disponibilizados na camada `Gold` servem como base para análises, iden
 5. Qual o meio de transporte mais usado nos trechos?
 6. Qual UF de destino aparece em mais trechos?
 7. Qual órgão pagou mais no total?
-8. Qual meio de transporte possui maior custo medio viagem?
+8. Qual meio de transporte possui maior custo médio viagem?
 9. Destinos com maior custo total ?
 10. Viajantes com maior custo total ?
 
-# Respostas:
+# Resultados:
 
 ## 1. Os 5 órgãos com maior custo total?
 
@@ -231,11 +241,11 @@ Os dados disponibilizados na camada `Gold` servem como base para análises, iden
 
 ![Órgão pagou mais no total](img/df_pergunta_7.png)
 
-## 8. Qual meio de transporte possui maior custo medio viagem?
+## 8. Qual meio de transporte possui maior custo médio viagem?
 
-![meio_transporte_maior_custo_medio_viagem](img/grafico_9.png)
+![meio_transporte_maior_custo_medio_viagem](img/grafico_8.png)
 
-![meio_transporte_maior_custo_medio_viagem](img/df_pergunta_9.png)
+![meio_transporte_maior_custo_medio_viagem](img/df_pergunta_8.png)
 
 ## 9. Destinos com maior custo total
 
