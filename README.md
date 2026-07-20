@@ -90,22 +90,18 @@ O pipeline permite:
 6. Crie o banco de dados no MySQL.
 
    Na pasta `sql/ddl` encontra-se o arquivo `criar_banco.sql`, responsável por criar o banco de dados e todas as tabelas necessárias para a execução do projeto.
+   
+7. Abra o projeto no Visual Studio Code e selecione o kernel do ambiente virtual.
 
-7. Execute os scripts na seguinte ordem:
-
-   1. `scripts/extrair.py`
-   2. `scripts/transformar.py`
-
-8. Abra o arquivo `notebooks/analise.ipynb` no Visual Studio Code.
-
-9. Selecione o kernel do ambiente virtual.
-
-   * Clique em **Select Kernel** (ou no nome do kernel exibido no canto superior direito do notebook);
+   * Clique em **Select Kernel** (ou no nome do kernel exibido no canto superior direito);
    * Escolha o interpretador correspondente ao ambiente virtual (`venv`);
    * Caso seja solicitado, selecione o kernel associado ao ambiente criado.
 
-10. Execute todas as células do notebook `notebooks/analise.ipynb` na ordem em que estão organizadas.
+8. Execute os scripts e o ipynb na seguinte ordem:
 
+   1. `scripts/extrair.py` : 
+   2. `scripts/transformar.py`
+   3. `notebooks/analise.ipynb`. Execute todas as células do notebook  na ordem em que estão organizadas.
 ```
 
 ## Estrutura do projeto
