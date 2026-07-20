@@ -67,9 +67,9 @@ O pipeline permite:
     Na pasta sql/ddl , você encontrará o arquivo "criar_banco.sql", que possuí todas as estruturas das tabelas necessárias
   
 7º Rode os arquivos na seguinte ordem:
-    1ª - extrair.py
-    2ª - transformar.py
-    3ª - analise.ipynb
+    1ª - scripts/extrair.py
+    2ª - scripts/transformar.py
+    3ª - notebooks/analise.ipynb
     
 ```
 
